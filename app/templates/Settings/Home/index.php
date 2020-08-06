@@ -1,5 +1,20 @@
 <div class="my-3">
   <h2 class="h4 mb-2">
+    <?= __('フォロー') ?>
+  </h2>
+
+  <div class="list-group mb-3">
+    <?= $this->element('Settings/Home/index/list_item', [
+      'url' => $this->Url->build([
+        'controller' => 'UserFollowees',
+        'action' => 'index',
+      ]),
+      'label' => __('フォロー中の{0}', __('ユーザー')),
+      'value' => $userFolloweesCount,
+    ]) ?>
+  </div>
+
+  <h2 class="h4 mb-2">
     <?= __('公開情報') ?>
   </h2>
 

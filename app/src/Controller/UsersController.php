@@ -8,6 +8,12 @@ use Cake\Auth\DefaultPasswordHasher;
 use Cake\Log\Log;
 
 class UsersController extends AppController {
+  public function initialize(): void {
+    parent::initialize();
+
+    $this->loadModel('UserFollowees');
+  }
+
   public function index() {
     $usersQuery = $this->Users->find()
         ->contain(['UserTags.Tags'])
@@ -55,7 +61,19 @@ class UsersController extends AppController {
         ])
         ->first();
 
+    $hasFollowed = false;
+
+    if (!empty($this->authUser)) {
+      $hasFollowed = $this->UserFollowees->find()
+          ->where([
+            ['UserFollowees.user_id' => $this->authUser['id']],
+            ['UserFollowees.target_user_id' => $user['id']],
+          ])
+          ->first() !== null;
+    }
+
     $this->set(compact([
+      'hasFollowed',
       'user',
     ]));
   }

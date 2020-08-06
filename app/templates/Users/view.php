@@ -24,6 +24,37 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/
       <h2 class="h5">
         <?= h($user['name']) ?>
       </h2>
+
+      <div class="mt-2">
+        <?php
+        if ($hasFollowed) {
+          echo $this->Form->postLink(__('フォロー解除'), [
+            'prefix' => 'Settings',
+            'controller' => 'UserFollowees',
+            'action' => 'delete',
+          ], [
+            'method' => 'delete',
+            'block' => true,
+            'class' => 'btn btn-outline-danger btn-sm',
+            'data' => [
+              'target_user_id' => $user['id'],
+            ],
+          ]);
+        } else {
+          echo $this->Form->postLink(__('フォローする'), [
+            'prefix' => 'Settings',
+            'controller' => 'UserFollowees',
+            'action' => 'create',
+          ], [
+            'block' => true,
+            'class' => 'btn btn-outline-info btn-sm',
+            'data' => [
+              'target_user_id' => $user['id'],
+            ],
+          ]);
+        }
+        ?>
+      </div>
     </div>
 
     <div class="col-md-8">
