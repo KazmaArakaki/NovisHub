@@ -1,6 +1,9 @@
 <div class="my-3">
   <h2 class="h4 mb-2">
-    <?= __('フォロー') ?>
+    <?= vsprintf('%s / %s', [
+      __('フォロー'),
+      __('つっつき'),
+    ]) ?>
   </h2>
 
   <div class="list-group mb-3">
@@ -10,7 +13,20 @@
         'action' => 'index',
       ]),
       'label' => __('フォロー中の{0}', __('ユーザー')),
-      'value' => $userFollowsCount,
+      'value' => h($userFollowsCount),
+    ]) ?>
+
+    <?= $this->element('Settings/Home/index/list_item', [
+      'url' => $this->Url->build([
+        'controller' => 'UserPokes',
+        'action' => 'index',
+      ]),
+      'label' => __('つっついてきた{0}', __('ユーザー')),
+      'value' => h($userPokesCount),
+      'icon' => $hasUncheckedUserPokes ? vsprintf('<span class="%s">%s</span>', [
+        'badge rounded-pill bg-danger',
+        '!',
+      ]) : '',
     ]) ?>
   </div>
 

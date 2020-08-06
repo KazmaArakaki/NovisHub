@@ -8,6 +8,7 @@ class HomeController extends SettingsController {
     parent::initialize();
 
     $this->loadModel('UserFollows');
+    $this->loadModel('UserPokes');
   }
 
   public function index() {
@@ -17,8 +18,15 @@ class HomeController extends SettingsController {
         ])
         ->count();
 
+    $userPokesCount = $this->UserPokes->find()
+        ->where([
+          ['UserPokes.target_user_id' => $this->authUser['id']],
+        ])
+        ->count();
+
     $this->set(compact([
       'userFollowsCount',
+      'userPokesCount',
     ]));
   }
 }

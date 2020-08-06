@@ -11,6 +11,7 @@ class AppController extends Controller {
   public function initialize(): void {
     parent::initialize();
 
+    $this->loadModel('UserPokes');
     $this->loadModel('Users');
 
     $this->loadComponent('Auth', [
@@ -42,6 +43,19 @@ class AppController extends Controller {
     }
 
     $this->set('authUser', $this->authUser);
+
+    $this->hasUncheckedUserPokes = false;
+
+    if (!empty($this->authUser)) {
+      $this->hasUncheckedUserPokes = $this->UserPokes->find()
+          ->where([
+            ['UserPokes.target_user_id' => $this->authUser['id']],
+            ['UserPokes.is_checked' => false],
+          ])
+          ->first() !== null;
+    }
+
+    $this->set('hasUncheckedUserPokes', $this->hasUncheckedUserPokes);
   }
 }
 

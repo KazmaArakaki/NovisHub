@@ -1,16 +1,23 @@
 <?php
 $url = !empty($url) ? $url : '';
 $label = !empty($label) ? $label : '';
-$value = !empty($value) ? $value : '';
+$value = !empty($value) || (isset($value) && strval($value) === '0') ? strval($value) : '';
+$icon = !empty($icon) ? $icon : '';
 ?>
 
 <a href="<?= $url ?>" class="list-group-item list-group-item-action">
   <div class="row g-2 align-items-center">
     <div class="col">
-      <div class="row justify-content-between">
+      <div class="row g-2 align-items-center">
         <div class="col">
           <?= $label ?>
         </div>
+
+        <?php if (!empty($icon)): ?>
+        <div class="col-auto">
+          <?= $icon ?>
+        </div>
+        <?php endif; ?>
 
         <div class="col-auto text-right text-muted">
           <?= $value ?>

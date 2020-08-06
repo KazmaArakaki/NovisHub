@@ -52,6 +52,10 @@
               'action' => 'index',
             ]) ?>" class="btn btn-outline-secondary">
               <?= __('{0}さん', $authUser['name']) ?>
+
+              <?php if ($hasUncheckedUserPokes): ?>
+              <span class="badge rounded-pill bg-danger">!</span>
+              <?php endif; ?>
             </a>
             <?php endif; ?>
           </div>
