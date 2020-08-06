@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `novis_hub`.`users`
     `profile` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
     `profile_summary` text CHARACTER SET utf8mb4 COLLATE utf8mb4_bin,
     `avatar_filename` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+    `is_agreed_to_terms_of_service` tinyint(1) NOT NULL DEFAULT '0',
     `created` datetime NOT NULL,
     `modified` datetime NOT NULL,
     `deleted` datetime DEFAULT NULL,
