@@ -11,6 +11,7 @@ class UsersTable extends Table {
     parent::initialize($config);
 
     $this->hasMany('UserFollows');
+    $this->hasMany('UserPokes');
     $this->hasMany('UserTags');
   }
 
