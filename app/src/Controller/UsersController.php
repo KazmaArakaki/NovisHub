@@ -87,6 +87,7 @@ class UsersController extends AppController {
           'auth_id' => $this->request->getData('auth_id', ''),
           'auth_password' => $this->request->getData('auth_password', ''),
           'name' => $this->request->getData('auth_id', ''),
+          'is_agreed_to_terms_of_service' => $this->request->getData('is_agreed_to_terms_of_service', ''),
         ]);
 
         if ($user->hasErrors()) {

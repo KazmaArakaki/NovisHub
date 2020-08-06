@@ -76,6 +76,26 @@ use Cake\I18n\Time;
 
     <footer class="p-3 p-md-5 mt-5 bg-light">
       <div class="container">
+        <p class="row justify-content-center">
+          <a href="<?= $this->Url->build([
+            'prefix' => false,
+            'controller' => 'Pages',
+            'action' => 'display',
+            'terms-of-service',
+          ]) ?>" class="col-auto link-dark">
+            <?= __('利用規約') ?>
+          </a>
+
+          <a href="<?= $this->Url->build([
+            'prefix' => false,
+            'controller' => 'Pages',
+            'action' => 'display',
+            'privacy-policy',
+          ]) ?>" class="col-auto link-dark">
+            <?= __('プライバシーポリシー') ?>
+          </a>
+        </p>
+
         <p class="text-center">
           <a href="https://github.com/KazmaArakaki/NovisHub" class="link-dark">
             <?= h('You are welcome to contribute to this project! Take a quick look at the project repository at GitHub!') ?>

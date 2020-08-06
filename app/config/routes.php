@@ -17,6 +17,18 @@ $routes->scope('/', function (RouteBuilder $builder) {
     'action' => 'index',
   ]);
 
+  $builder->connect('/terms-of-service', [
+    'controller' => 'Pages',
+    'action' => 'display',
+    'terms-of-service',
+  ]);
+
+  $builder->connect('/privacy-policy', [
+    'controller' => 'Pages',
+    'action' => 'display',
+    'privacy-policy',
+  ]);
+
   $builder->connect('/pages/*', [
     'controller' => 'Pages',
     'action' => 'display',

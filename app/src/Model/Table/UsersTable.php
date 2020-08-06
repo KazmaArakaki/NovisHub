@@ -48,6 +48,14 @@ class UsersTable extends Table {
           'message' => __('{0}は５０文字以下で入力してください。', __('検索用プロフィール')),
         ]);
 
+    $validator
+        ->add('is_agreed_to_terms_of_service', 'custom', [
+          'rule' => function ($value, $context) {
+            return $value === '1';
+          },
+          'message' => __('利用規約をご確認の上、「利用規約に同意する」にチェックを入れてください。'),
+        ]);
+
     return $validator;
   }
 }
