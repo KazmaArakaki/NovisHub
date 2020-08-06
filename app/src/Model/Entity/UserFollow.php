@@ -5,7 +5,7 @@ namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
 
-class UserFollowee extends Entity {
+class UserFollow extends Entity {
   protected $_accessible = [
     '*' => true,
     'id' => false,

@@ -11,7 +11,7 @@ class UsersController extends AppController {
   public function initialize(): void {
     parent::initialize();
 
-    $this->loadModel('UserFollowees');
+    $this->loadModel('UserFollows');
   }
 
   public function index() {
@@ -64,10 +64,10 @@ class UsersController extends AppController {
     $hasFollowed = false;
 
     if (!empty($this->authUser)) {
-      $hasFollowed = $this->UserFollowees->find()
+      $hasFollowed = $this->UserFollows->find()
           ->where([
-            ['UserFollowees.user_id' => $this->authUser['id']],
-            ['UserFollowees.target_user_id' => $user['id']],
+            ['UserFollows.user_id' => $this->authUser['id']],
+            ['UserFollows.target_user_id' => $user['id']],
           ])
           ->first() !== null;
     }

@@ -5,7 +5,7 @@ namespace App\Model\Table;
 
 use App\ORM\Table;
 
-class UserFolloweesTable extends Table {
+class UserFollowsTable extends Table {
   public function initialize(array $config): void {
     parent::initialize($config);
 

@@ -1,9 +1,9 @@
 <div class="my-3">
   <div class="row mb-2">
     <div class="col">
-      <?php foreach ($userFollowees as $userFollowee): ?>
+      <?php foreach ($userFollows as $userFollow): ?>
       <?= $this->element('user_card', [
-        'user' => $userFollowee['target_user'],
+        'user' => $userFollow['target_user'],
       ]) ?>
       <?php endforeach; ?>
     </div>

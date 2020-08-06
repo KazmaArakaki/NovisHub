@@ -5,7 +5,7 @@ namespace App\Controller\Settings;
 
 use App\Exception\Exception as AppException;
 
-class UserFolloweesController extends SettingsController {
+class UserFollowsController extends SettingsController {
   public function initialize(): void {
     parent::initialize();
 
@@ -25,10 +25,10 @@ class UserFolloweesController extends SettingsController {
           throw new AppException(__('{0}が見つかりませんでした。', __('ユーザー')));
         }
 
-        $hasAlreadyFollowed = $this->UserFollowees->find()
+        $hasAlreadyFollowed = $this->UserFollows->find()
             ->where([
-              ['UserFollowees.user_id' => $this->authUser['id']],
-              ['UserFollowees.target_user_id' => $targetUser['id']],
+              ['UserFollows.user_id' => $this->authUser['id']],
+              ['UserFollows.target_user_id' => $targetUser['id']],
             ])
             ->first() !== null;
 
@@ -36,14 +36,14 @@ class UserFolloweesController extends SettingsController {
           throw new AppException(__('既にフォローしている{0}です。', __('ユーザー')));
         }
 
-        $userFollowee = $this->UserFollowees->newEntity([
+        $userFollow = $this->UserFollows->newEntity([
           'user_id' => $this->authUser['id'],
           'target_user_id' => $targetUser['id'],
         ]);
 
-        $userFolloweeSaved = $this->UserFollowees->save($userFollowee);
+        $userFollowSaved = $this->UserFollows->save($userFollow);
 
-        if (!$userFolloweeSaved) {
+        if (!$userFollowSaved) {
           throw new AppException(__('時間を置いて再度お試しください。'));
         }
       } catch (AppException $exception) {
@@ -58,19 +58,19 @@ class UserFolloweesController extends SettingsController {
   }
 
   public function index() {
-    $userFolloweesQuery = $this->UserFollowees->find()
+    $userFollowsQuery = $this->UserFollows->find()
         ->contain(['TargetUsers.UserTags.Tags'])
         ->where([
-          ['UserFollowees.user_id' => $this->authUser['id']],
+          ['UserFollows.user_id' => $this->authUser['id']],
         ])
-        ->order(['UserFollowees.created' => 'desc']);
+        ->order(['UserFollows.created' => 'desc']);
 
-    $userFollowees = $this->paginate($userFolloweesQuery, [
+    $userFollows = $this->paginate($userFollowsQuery, [
       'limit' => 20,
     ]);
 
     $this->set(compact([
-      'userFollowees',
+      'userFollows',
     ]));
   }
 
@@ -87,20 +87,20 @@ class UserFolloweesController extends SettingsController {
           throw new AppException(__('{0}が見つかりませんでした。', __('ユーザー')));
         }
 
-        $userFollowee = $this->UserFollowees->find()
+        $userFollow = $this->UserFollows->find()
             ->where([
-              ['UserFollowees.user_id' => $this->authUser['id']],
-              ['UserFollowees.target_user_id' => $targetUser['id']],
+              ['UserFollows.user_id' => $this->authUser['id']],
+              ['UserFollows.target_user_id' => $targetUser['id']],
             ])
             ->first();
 
-        if (empty($userFollowee)) {
+        if (empty($userFollow)) {
           throw new AppException(__('フォローしていない{0}です。', __('ユーザー')));
         }
 
-        $userFolloweeDeleted = $this->UserFollowees->delete($userFollowee);
+        $userFollowDeleted = $this->UserFollows->delete($userFollow);
 
-        if (!$userFolloweeDeleted) {
+        if (!$userFollowDeleted) {
           throw new AppException(__('時間を置いて再度お試しください。'));
         }
       } catch (AppException $exception) {

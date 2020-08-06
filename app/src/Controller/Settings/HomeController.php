@@ -7,18 +7,18 @@ class HomeController extends SettingsController {
   public function initialize(): void {
     parent::initialize();
 
-    $this->loadModel('UserFollowees');
+    $this->loadModel('UserFollows');
   }
 
   public function index() {
-    $userFolloweesCount = $this->UserFollowees->find()
+    $userFollowsCount = $this->UserFollows->find()
         ->where([
-          ['UserFollowees.user_id' => $this->authUser['id']],
+          ['UserFollows.user_id' => $this->authUser['id']],
         ])
         ->count();
 
     $this->set(compact([
-      'userFolloweesCount',
+      'userFollowsCount',
     ]));
   }
 }

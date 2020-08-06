@@ -30,7 +30,7 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/
         if ($hasFollowed) {
           echo $this->Form->postLink(__('フォロー解除'), [
             'prefix' => 'Settings',
-            'controller' => 'UserFollowees',
+            'controller' => 'UserFollows',
             'action' => 'delete',
           ], [
             'method' => 'delete',
@@ -43,7 +43,7 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/
         } else {
           echo $this->Form->postLink(__('フォローする'), [
             'prefix' => 'Settings',
-            'controller' => 'UserFollowees',
+            'controller' => 'UserFollows',
             'action' => 'create',
           ], [
             'block' => true,

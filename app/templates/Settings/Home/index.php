@@ -6,11 +6,11 @@
   <div class="list-group mb-3">
     <?= $this->element('Settings/Home/index/list_item', [
       'url' => $this->Url->build([
-        'controller' => 'UserFollowees',
+        'controller' => 'UserFollows',
         'action' => 'index',
       ]),
       'label' => __('フォロー中の{0}', __('ユーザー')),
-      'value' => $userFolloweesCount,
+      'value' => $userFollowsCount,
     ]) ?>
   </div>
 
