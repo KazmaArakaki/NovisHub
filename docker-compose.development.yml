@@ -1,0 +1,71 @@
+version: "3.7"
+
+services:
+  app-server:
+    image: "nginx:1.18"
+    container_name: "novis-hub-app-server"
+    command: >
+      /bin/sh -c
+      "envsubst '$$VIRTUAL_HOST' < /etc/nginx/conf.d/development.conf.org > /etc/nginx/conf.d/development.conf && nginx -g 'daemon off;'"
+    env_file:
+      - "development.env"
+    volumes:
+      - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "./nginx/conf.d:/etc/nginx/conf.d"
+      - "./nginx/certs:/etc/nginx/certs"
+      - "./app:/usr/share/nginx/html"
+    networks:
+      novis-hub-app-network:
+      novis-hub-reverse-proxy-network:
+
+  php-fpm:
+    image: "php-fpm:novis-hub"
+    build:
+      context: "./"
+      dockerfile: "Dockerfile.php-fpm"
+    container_name: "novis-hub-php-fpm"
+    env_file:
+      - "development.env"
+    volumes:
+      - "./php/php.ini:/usr/local/etc/php/php.ini"
+      - "./app:/var/www/html"
+    networks:
+      novis-hub-app-network:
+        aliases:
+          - "php-fpm"
+      novis-hub-database-network:
+
+  nginx-proxy:
+    image: "jwilder/nginx-proxy"
+    container_name: "novis-hub-nginx-proxy"
+    ports:
+      - "80:80"
+    volumes:
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+    networks:
+      novis-hub-reverse-proxy-network:
+
+  mysql-server:
+    image: "mysql:8"
+    container_name: "novis-hub-mysql-server"
+    ports:
+      - "3306:3306"
+    volumes:
+      - "novis-hub-database-volume:/var/lib/mysql"
+    env_file:
+      - "development.env"
+    networks:
+      novis-hub-database-network:
+
+volumes:
+  novis-hub-database-volume:
+    name: "novis-hub-database-volume"
+
+networks:
+  novis-hub-app-network:
+    name: "novis-hub-app-network"
+  novis-hub-reverse-proxy-network:
+    name: "novis-hub-reverse-proxy-network"
+  novis-hub-database-network:
+    name: "novis-hub-database-network"
+
