@@ -1,3 +1,6 @@
+<?php
+use Cake\I18n\Time;
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -71,7 +74,18 @@
       </div>
     </main>
 
-    <footer>
+    <footer class="p-3 p-md-5 mt-5 bg-light">
+      <div class="container">
+        <p class="text-center">
+          <a href="https://github.com/KazmaArakaki/NovisHub" class="link-dark">
+            <?= h('You are welcome to contribute to this project! Take a quick look at the project repository at GitHub!') ?>
+          </a>
+        </p>
+
+        <p class="text-center text-muted">
+          <?= sprintf('© Copyright %s %s', Time::now('Asia/Tokyo')->i18nFormat('yyyy'), h('Novis Hub')) ?>
+        </p>
+      </div>
     </footer>
 
     <?= $this->fetch('modal') ?>
