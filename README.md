@@ -26,16 +26,16 @@ $ docker-compose -f docker-compose.development.yml run app-server /bin/sh -c 'op
 Create default key and cert for app server.
 
 ``` bash
+$ docker-compose -f docker-compose.staging.yml run php-fpm /bin/sh -c 'composer install'
+```
+
+Install php dependencies with composer.
+
+``` bash
 $ docker-compose -f docker-compose.development.yml up
 ```
 
 Build images and start containers for project.
-
-``` bash
-$ docker exec novis-hub-php-fpm composer install
-```
-
-Install php dependencies with composer.
 
 ``` bash
 $ cat schema.sql | docker exec -i novis-hub-mysql-server mysql -uroot -ppassword
