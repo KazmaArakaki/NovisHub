@@ -16,6 +16,20 @@ CREATE TABLE IF NOT EXISTS `novis_hub`.`tags`
   DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 ;
 
+CREATE TABLE `novis_hub`.`user_followees`
+  (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `user_id` int NOT NULL,
+    `target_user_id` int NOT NULL,
+    `created` datetime NOT NULL,
+    `modified` datetime NOT NULL,
+    `deleted` datetime DEFAULT NULL,
+    PRIMARY KEY (`id`)
+  )
+  ENGINE=InnoDB
+  DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+;
+
 CREATE TABLE IF NOT EXISTS `novis_hub`.`user_tags`
   (
     `id` int NOT NULL AUTO_INCREMENT,
