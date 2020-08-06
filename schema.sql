@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `novis_hub`.`tags`
   DEFAULT CHARSET=utf8 COLLATE=utf8_bin
 ;
 
-CREATE TABLE `novis_hub`.`user_followees`
+CREATE TABLE `novis_hub`.`user_follows`
   (
     `id` int NOT NULL AUTO_INCREMENT,
     `user_id` int NOT NULL,
