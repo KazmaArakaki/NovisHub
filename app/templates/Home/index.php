@@ -9,10 +9,12 @@
 
   <div class="d-flex flex-column flex-md-row">
     <a href="<?= $this->Url->build([
+      'controller' => 'Users',
+      'action' => 'signup',
     ]) ?>" class="mr-md-3 mb-3 mb-md-0 btn btn-primary btn-lg">
-      <?= vsprintf('%s / %s', [
+      <?= vsprintf('%s / <small>%s</small>', [
+        __('アカウント登録'),
         __('ログイン'),
-        __('新規登録'),
       ]) ?>
     </a>
   </div>
