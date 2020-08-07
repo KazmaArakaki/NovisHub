@@ -29,6 +29,8 @@ $pageDescription = __('{0}は駆け出しエンジニアが仲間を見つける
     <meta property="og:description" content="<?= $pageDescription ?>">
     <?php endif; ?>
 
+    <?= $this->Html->css('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap') ?>
+
     <?= $this->Html->css('https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css', [
       'integrity' => 'sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I',
       'crossorigin' => 'anonymous',
@@ -48,7 +50,17 @@ $pageDescription = __('{0}は駆け出しエンジニアが仲間を見つける
           'prefix' => false,
           'controller' => 'Home',
           'action' => 'index',
-        ]) ?>" class="navbar-brand p-0 mr-2">
+        ]) ?>" class="navbar-brand p-0 mr-2" style="<?= $this->Html->style([
+          'font-family' => 'Teko, sans-serif',
+          'color' => '#0f4c81',
+        ]) ?>">
+          <?= $this->Html->image('app_logo.png', [
+            'style' => $this->Html->style([
+              'width' => '2em',
+              'height' => '2em',
+            ]),
+          ]) ?>
+
           <?= __('Novis Hub') ?>
         </a>
 
