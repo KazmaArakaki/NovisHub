@@ -1,4 +1,11 @@
-<div class="mb-5 py-3 py-md-5">
+<div class="mb-5 py-3 py-md-5" style="<?= $this->Html->style([
+  'background-image' => sprintf('url(%s)', $this->Url->image('app_logo.png')),
+  'background-repeat' => 'no-repeat',
+  'background-color' => 'rgba(255,255,255,0.8)',
+  'background-blend-mode' => 'lighten',
+  'background-position' => 'top right',
+  'background-size' => '50vw',
+]) ?>">
   <h1 class="mb-3 text-center text-md-left">
     <?= __('We are developers.<br>We are buddies.') ?>
   </h1>

@@ -1,13 +1,33 @@
 <?php
+use Cake\Core\Configure;
 use Cake\I18n\Time;
+
+$pageTitle = !empty($this->fetch('pageTitle')) ? sprintf('%s | ', $this->fetch('pageTitle')) : '';
+$pageTitle .= __('Novis Hub');
+
+$pageDescription = __('{0}は駆け出しエンジニアが仲間を見つけるための場所。', __('Novis Hub'));
 ?>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <meta name="robots" content="<?= Configure::read('debug') || !empty($this->request->getParam('prefix')) ? 'noindex,nofollow' : 'index,follow' ?>">
+
+    <meta name="description" content="<?= $pageDescription ?>">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="<?= __('Novis Hub') ?>">
 
     <?= $this->fetch('meta') ?>
+
+    <?php if (!$this->exists('meta')): ?>
+    <meta property="og:title" content="<?= $pageTitle ?>">
+    <meta property="og:image" content="<?= $this->Url->image('app_logo.png', [
+      'fullBase' => true,
+    ]) ?>">
+    <meta property="og:description" content="<?= $pageDescription ?>">
+    <?php endif; ?>
 
     <?= $this->Html->css('https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css', [
       'integrity' => 'sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I',
@@ -15,6 +35,10 @@ use Cake\I18n\Time;
     ]) ?>
 
     <?= $this->fetch('css') ?>
+
+    <title>
+      <?= $pageTitle ?>
+    </title>
   </head>
 
   <body>

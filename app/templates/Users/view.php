@@ -10,7 +10,15 @@ $this->Html->css('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/sty
 $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js', [
   'block' => true,
 ]);
+
+$this->assign('pageTitle', h($user['name']));
 ?>
+
+<?php $this->append('meta'); ?>
+<meta property="og:title" content="<?= h($user['name']) ?>">
+<meta property="og:image" content="<?= $user->getAvatarUrl() ?>">
+<meta property="og:description" content="<?= h($user['profile_summary']) ?>">
+<?php $this->end(); ?>
 
 <div class="my-3">
   <div class="row">
