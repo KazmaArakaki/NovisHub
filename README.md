@@ -26,7 +26,7 @@ $ docker-compose -f docker-compose.development.yml run app-server /bin/sh -c 'op
 Create default key and cert for app server.
 
 ``` bash
-$ docker-compose -f docker-compose.staging.yml run php-fpm /bin/sh -c 'composer install'
+$ docker-compose -f docker-compose.development.yml run php-fpm /bin/sh -c 'composer install'
 ```
 
 Install php dependencies with composer.
