@@ -18,6 +18,12 @@ return [
     'salt' => 'securitysalt',
   ],
 
+  'Twitter' => [
+    'meta' => [
+      'site' => '',
+    ],
+  ],
+
   'Datasources' => [
     'default' => [
       'host' => 'mysql-server',

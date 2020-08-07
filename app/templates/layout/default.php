@@ -18,6 +18,8 @@ $pageDescription = __('{0}は駆け出しエンジニアが仲間を見つける
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="<?= __('Novis Hub') ?>">
+    <meta name="twitter:card" content="summary"></meta>
+    <meta name="twitter:site" content="<?= Configure::read('Twitter.meta.site') ?>"></meta>
 
     <?= $this->fetch('meta') ?>
 
