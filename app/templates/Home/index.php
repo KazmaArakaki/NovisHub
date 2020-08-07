@@ -24,6 +24,61 @@
         __('ログイン'),
       ]) ?>
     </a>
+
+    <a href="<?= $this->Url->build([
+      'controller' => 'Users',
+      'action' => 'index',
+    ]) ?>" class="btn btn-outline-info btn-lg">
+      <?= __('駆け出しエンジニアを見つける') ?>
+    </a>
+  </div>
+</div>
+
+<div class="row mb-5 pb-md-4">
+  <div class="col-md-7 order-1 mb-4 mb-md-0">
+    <img src="<?= $this->Url->image('home_image_1.png') ?>" class="img-fluid rounded shadow">
+  </div>
+
+  <div class="col-md-5 order-2">
+    <h2>
+      <?= __('自分のプロフィールページを作ってみよう') ?>
+    </h2>
+
+    <p>
+      <?= __('プロフィールページに自分のことについて書いてみよう。<br>好きな画像をアバターに設定できるし、本文はマークダウン記法を使って好きなようにレイアウトできる。') ?>
+    </p>
+  </div>
+</div>
+
+<div class="row mb-5 pb-md-4">
+  <div class="col-md-7 order-1 order-md-2 mb-4 mb-md-0">
+    <img src="<?= $this->Url->image('home_image_2.png') ?>" class="img-fluid rounded shadow">
+  </div>
+
+  <div class="col-md-5 order-2 order-md-1">
+    <h2>
+      <?= __('他の駆け出しエンジニアを探してみよう') ?>
+    </h2>
+
+    <p>
+      <?= __('プロフィールや名前、タグから気になる駆け出しエンジニアを探してみよう。<br>気になる駆け出しエンジニアが見つかったら、プロフィールページを覗いてみよう。') ?>
+    </p>
+  </div>
+</div>
+
+<div class="row mb-5 pb-md-4">
+  <div class="col-md-7 order-1 mb-4 mb-md-0">
+    <img src="<?= $this->Url->image('home_image_3.png') ?>" class="img-fluid rounded shadow">
+  </div>
+
+  <div class="col-md-5 order-2">
+    <h2>
+      <?= __('気になる駆け出しエンジニアをフォローしたりつっついたりしてみよう') ?>
+    </h2>
+
+    <p>
+      <?= __('気になる駆け出しエンジニアを見つけたら、フォローしたりつっついたりしてみよう。<br>あなたがフォローした駆け出しエンジニアやあなたをつっついてきた駆け出しエンジニアはマイページから確認できるよ。<br>もしつっつかれたら今度はこっちからつっつきかえしてみよう。') ?>
+    </p>
   </div>
 </div>
 
