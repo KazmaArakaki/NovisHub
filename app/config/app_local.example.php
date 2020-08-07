@@ -9,6 +9,9 @@ return [
 
   'App' => [
     'fullBaseUrl' => sprintf('http://%s', env('VIRTUAL_HOST')),
+    'contact' => [
+      'googleFormUrl' => '',
+    ],
   ],
 
   'Security' => [

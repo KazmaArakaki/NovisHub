@@ -1,3 +1,6 @@
+<?php
+use Cake\Core\Configure;
+?>
 <div class="my-5">
   <h1 class="h3">プライバシーポリシー</h1>
 
@@ -102,11 +105,23 @@
     <li>当社が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</li>
   </ol>
 
+  <?php if (Configure::check('App.contact.googleFormUrl')): ?>
   <h2 class="h5 mt-3 mb-2">第10条（お問い合わせ窓口）</h2>
 
   <p>本ポリシーに関するお問い合わせは，下記の窓口までお願いいたします。</p>
 
-  <p>Eメールアドレス：</p>
+  <div class="mb-3">
+    <a href="<?= Configure::read('App.contact.googleFormUrl') ?>" target="_blank" class="col-auto link-dark">
+      <?= __('お問い合わせ') ?>
+
+      <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" fill-rule="evenodd" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1.5 13A1.5 1.5 0 0 0 3 14.5h8a1.5 1.5 0 0 0 1.5-1.5V9a.5.5 0 0 0-1 0v4a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 5v8zm7-11a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V2.5H9a.5.5 0 0 1-.5-.5z" />
+
+        <path d="M14.354 1.646a.5.5 0 0 1 0 .708l-8 8a.5.5 0 0 1-.708-.708l8-8a.5.5 0 0 1 .708 0z" />
+      </svg>
+    </a>
+  </div>
+  <?php endif; ?>
 
   <p>以上</p>
 </div>
