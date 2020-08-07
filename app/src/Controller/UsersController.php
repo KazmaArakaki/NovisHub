@@ -163,6 +163,12 @@ class UsersController extends AppController {
 
         $this->Flash->success(__('ログインに成功しました。'));
 
+        $redirectUrl = $this->Auth->redirectUrl();
+
+        if (!empty($redirectUrl)) {
+          return $this->redirect($redirectUrl);
+        }
+
         return $this->redirect([
           'prefix' => 'Settings',
           'controller' => 'Home',
