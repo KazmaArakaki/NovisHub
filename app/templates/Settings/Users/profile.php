@@ -35,6 +35,7 @@ $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/
             </div>
 
             <?= $this->Form->textarea('profile', [
+              'rows' => 10,
               'id' => 'profile-field',
               'class' => implode(' ', [
                 'form-control',
