@@ -87,17 +87,39 @@ $pageDescription = __('{0}は駆け出しエンジニアが仲間を見つける
 
             <?php else: ?>
 
-            <a href="<?= $this->Url->build([
-              'prefix' => 'Settings',
-              'controller' => 'Home',
-              'action' => 'index',
-            ]) ?>" class="btn btn-outline-secondary">
-              <?= __('{0}さん', $authUser['name']) ?>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown">
+                <?= __('{0}さん', $authUser['name']) ?>
 
-              <?php if ($hasUncheckedUserPokes): ?>
-              <span class="badge rounded-pill bg-danger">!</span>
-              <?php endif; ?>
-            </a>
+                <?php if ($hasUncheckedUserPokes): ?>
+                <span class="badge rounded-pill bg-danger">!</span>
+                <?php endif; ?>
+              </button>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="<?= $this->Url->build([
+                    'prefix' => false,
+                    'controller' => 'Users',
+                    'action' => 'view',
+                    $authUser['id'],
+                  ]) ?>" class="dropdown-item">
+                    <?= __('公開プロフィール') ?>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<?= $this->Url->build([
+                    'prefix' => 'Settings',
+                    'controller' => 'Home',
+                    'action' => 'index',
+                  ]) ?>" class="dropdown-item">
+                    <?= __('設定') ?>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
             <?php endif; ?>
           </div>
         </div>

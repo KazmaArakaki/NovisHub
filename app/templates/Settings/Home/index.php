@@ -30,9 +30,22 @@
     ]) ?>
   </div>
 
-  <h2 class="h4 mb-2">
-    <?= __('公開情報') ?>
-  </h2>
+  <div class="row mb-2">
+    <h2 class="col h4 mb-0">
+      <?= __('公開情報') ?>
+    </h2>
+
+    <div class="col-auto">
+      <a href="<?= $this->Url->build([
+        'prefix' => false,
+        'controller' => 'Users',
+        'action' => 'view',
+        $authUser['id'],
+      ]) ?>" class="btn btn-outline-info btn-sm">
+        <?= __('公開プロフィール') ?>
+      </a>
+    </div>
+  </div>
 
   <div class="list-group mb-3">
     <?= $this->element('Settings/Home/index/list_item', [
