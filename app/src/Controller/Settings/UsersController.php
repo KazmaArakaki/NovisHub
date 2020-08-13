@@ -319,6 +319,9 @@ class UsersController extends SettingsController {
           $imagick = new Imagick();
 
           $imagick->readImage($tmpFilepath);
+          $imagick->setBackgroundColor("#ffffff");
+          $imagick->setImageAlphaChannel(Imagick::ALPHACHANNEL_BACKGROUND);
+          $imagick = $imagick->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
           $imagick->setImageFormat('jpg');
           $imagick->resizeImage(1200, 1200, Imagick::FILTER_LANCZOS, 1, true);
 
@@ -333,7 +336,12 @@ class UsersController extends SettingsController {
             throw new AppException(__('{0}の保存に失敗しました。', __('アバター画像')));
           }
 
+          $imagick = new Imagick();
+
           $imagick->readImage($tmpFilepath);
+          $imagick->setBackgroundColor("#ffffff");
+          $imagick->setImageAlphaChannel(Imagick::ALPHACHANNEL_BACKGROUND);
+          $imagick = $imagick->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
           $imagick->setImageFormat('jpg');
           $imagick->resizeImage(400, 400, Imagick::FILTER_LANCZOS, 1, true);
 
