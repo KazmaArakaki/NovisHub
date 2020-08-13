@@ -22,6 +22,9 @@ return [
     'meta' => [
       'site' => '',
     ],
+    'embedTag' => [
+      'universalWebsiteTagId' => '',
+    ],
   ],
 
   'Datasources' => [

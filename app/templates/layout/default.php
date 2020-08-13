@@ -195,6 +195,8 @@ $pageDescription = __('{0}は駆け出しエンジニアが仲間を見つける
     ]) ?>
  
     <?= $this->fetch('script') ?>
+
+    <?= $this->element('twitter_universal_website_tag') ?>
   </body>
 </html>
 
